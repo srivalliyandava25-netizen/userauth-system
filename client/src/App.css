@@ -1,0 +1,435 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #19213d;
+  background: #f4f5ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary: #6558e8;
+  --primary-dark: #5144d5;
+  --text: #19213d;
+  --muted: #858ba3;
+  --border: #e6e8f2;
+}
+
+/* Page background */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 44px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 12% 15%,
+      rgba(155, 139, 255, 0.24),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(115, 185, 255, 0.22),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #f8f7ff, #eff2ff 55%, #f7f8ff);
+}
+
+/* Decorative background circles */
+
+.app::before,
+.app::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.app::before {
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(101, 88, 232, 0.15);
+  top: 5%;
+  right: 8%;
+}
+
+.app::after {
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(101, 88, 232, 0.15);
+  bottom: 6%;
+  left: 8%;
+}
+
+/* Main authentication card */
+
+.auth-card {
+  width: 100%;
+  max-width: 465px;
+  padding: 42px 40px 28px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 30px 80px rgba(56, 54, 119, 0.12),
+    0 8px 24px rgba(56, 54, 119, 0.05);
+  backdrop-filter: blur(18px);
+  animation: cardEnter 0.55s ease both;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #6558e8,
+    #a58bff,
+    #6cbcff
+  );
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headings */
+
+.auth-card h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(27px, 5vw, 33px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -1.2px;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 10px 0 27px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Login and Register tabs */
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  margin-bottom: 27px;
+  border: 1px solid #ececf6;
+  border-radius: 13px;
+  background: #f5f5fb;
+}
+
+.tabs button {
+  flex: 1;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #7c8198;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.tabs button:hover {
+  color: var(--primary);
+}
+
+.tabs button.active {
+  color: white;
+  background: linear-gradient(135deg, #7567f1, #5748d9);
+  box-shadow: 0 5px 13px rgba(101, 88, 232, 0.25);
+}
+
+.tabs button:active {
+  transform: scale(0.98);
+}
+
+/* Form fields */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #303751;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 49px;
+  padding: 13px 15px;
+  outline: none;
+  border: 1px solid #e3e5f0;
+  border-radius: 11px;
+  background: #fbfbfe;
+  color: var(--text);
+  font-size: 14px;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.form-group input::placeholder {
+  color: #a8adbf;
+}
+
+.form-group input:hover {
+  border-color: #c9c5f5;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(101, 88, 232, 0.11);
+}
+
+.form-group input:focus-visible {
+  outline: none;
+}
+
+/* Primary button */
+
+.submit-btn {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 4px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #7567f1, #5545d7);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(101, 88, 232, 0.23);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(101, 88, 232, 0.32);
+  filter: brightness(1.04);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* View Profile and Logout buttons */
+
+.auth-card > .tabs button:not(.active):focus-visible,
+.auth-card button:focus-visible {
+  outline: 3px solid rgba(101, 88, 232, 0.35);
+  outline-offset: 3px;
+}
+
+/* Status messages */
+
+.message {
+  margin: 19px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #dedafc;
+  border-radius: 10px;
+  background: #f5f3ff;
+  color: #5144c9;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  animation: messageEnter 0.25s ease;
+}
+
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Profile panel */
+
+.profile-details {
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid #e6e3ff;
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, #faf9ff, #f1f3ff);
+  animation: cardEnter 0.35s ease both;
+}
+
+.profile-details h2 {
+  margin: 0 0 19px;
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.profile-details p {
+  margin: 0;
+  padding: 13px 0;
+  border-bottom: 1px solid #e8e7f5;
+  color: #5f6580;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.profile-details p:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.profile-details strong {
+  display: inline-block;
+  min-width: 62px;
+  color: #343956;
+}
+
+/* Footer */
+
+.footer-text {
+  margin: 26px 0 0;
+  padding-top: 19px;
+  border-top: 1px solid #f0f0f7;
+  color: #999db1;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* Responsive layout */
+
+@media (max-width: 520px) {
+  .app {
+    padding: 25px 15px;
+  }
+
+  .auth-card {
+    padding: 34px 23px 24px;
+    border-radius: 21px;
+  }
+
+  .auth-card h1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    margin-bottom: 23px;
+  }
+
+  .app::before {
+    width: 140px;
+    height: 140px;
+    top: 3%;
+    right: -45px;
+  }
+
+  .app::after {
+    width: 100px;
+    height: 100px;
+    bottom: 3%;
+    left: -35px;
+  }
+
+  .profile-details {
+    padding: 18px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

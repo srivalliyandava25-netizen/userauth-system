@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
@@ -7,9 +6,11 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const authMiddleware = require('./middleware/authMiddleware');
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 app.post('/register', async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log('Email received:', JSON.stringify(email));
 
         if (!email || !password) {
             return res.status(400).json({
@@ -48,7 +50,7 @@ app.post('/register', async (req, res) => {
             })
         }
 
-        if (!/^[[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             return res.status(400).json({
                 message: 'Please enter a valid email address'
             })
