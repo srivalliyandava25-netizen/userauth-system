@@ -19,6 +19,8 @@ function App() {
     setMessage('')
     setLoading(true)
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     const endpoint =
       page === 'register'
         ? 'http://localhost:5000/register'
@@ -78,7 +80,7 @@ function App() {
       }
 
       const response = await fetch(
-        'http://localhost:5000/profile',
+        `${API_URL}/profile`,
         {
           method: 'GET',
           headers: {
